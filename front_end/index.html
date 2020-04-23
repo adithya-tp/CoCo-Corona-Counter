@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <title>Welcome to my Web Serviceeee!!!</title>
+</head>
+<body>
+    <h1 class="jumbotron">
+        Welcome to the "Corona Count" WebService!
+    </h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="container">
+                        <div class="form-group p-20">
+                            <label>Name of the country you'd like to search</label>
+                            <input type="text" class="form-control" id="getCountryName" placeholder="Enter Country Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="container">
+                        <div class="form-group p-20">
+                            <label>Total Cases</label>
+                            <input type="text" class="form-control" id="total" placeholder="0">
+                        </div>
+                        <div class="form-group p-20">
+                            <label>Total Deaths</label>
+                            <input type="text" class="form-control" id="death" placeholder="0">
+                        </div>
+                        <div class="form-group p-20">
+                            <label>Total Recovered</label>
+                            <input type="text" class="form-control" id="recovered" placeholder="0">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#btn").click(function (event) {
+            var country_input = $("#getCountryName").val()
+            console.log(country_input)
+
+            var data = {
+                country: country_input
+            };
+
+            var dataToSend = JSON.stringify(data);
+
+            $.ajax({
+                url: '/displayCountryDetails/',
+                type: 'POST',
+                data: dataToSend,
+
+                success: function (jsonResponse) {
+                    var objresponse = JSON.parse(jsonResponse);
+                    console.log(objresponse);
+
+                    $("#total").val(objresponse['total']);
+                    $("#death").val(objresponse['death']);
+                    $("#recovered").val(objresponse['recovered']);
+                },
+                error: function () {
+                    $("#total").text("ERROR");
+                }
+            });
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
