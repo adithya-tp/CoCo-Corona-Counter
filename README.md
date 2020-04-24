@@ -1,5 +1,5 @@
 # CoCo-Corona-Counter
-CoCo: A micro-service powered Corona Counter build using Tornado. Simply enter a country's name, and you shall get the number of cases for the country in terms of "Active", "Recovered" and "Dead".
+CoCo: A micro-service powered Corona Counter built using Tornado. Simply enter a country's name, and you shall get the number of cases for the country in terms of "Active", "Recovered" and "Dead".
 
 # CoCo in Action
 ![Architecture](assets/ezgif.com-crop.gif)
