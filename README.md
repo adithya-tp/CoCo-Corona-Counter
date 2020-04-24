@@ -6,6 +6,14 @@ CoCo: A micro-service powered Corona Counter build using Tornado. Simply enter a
 
 ## Quick Start
 
+Make sure you installed tornado, urllib and lxml. I used the following versions:
+- tornado 3.2.1
+- urllib3 1.25.8
+- python 3.6
+- lxml 4.5.0
+
+Once that's done, the following steps should get you up and running
+
 1. Run the app.py file
 `./app.py`
 2. Open up your browser to `localhost:8888`
